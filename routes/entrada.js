@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
            return res.json(500, { message: 'Error buscando entradas .'});  
          }  
          
-    return  res.json(list);
+    return  res.json(list); /*se envia */
       }
    }); 
 });
