@@ -10,7 +10,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var pelisRouter = require('./routes/peliculas');
-var entradaRouter= require('./modulos/entrada');
+var entradaRouter= require('./routes/entrada');
 
 var app = express();
 
