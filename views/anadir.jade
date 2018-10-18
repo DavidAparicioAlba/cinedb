@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= 'Añadir Pelicula'
+  .container
+    form(action='/negocios', method='post')
+        div.form-group
+          label Titulo: 
+          input(type='text', name='titulo')
+        div.form-group
+          label Sinpsis: 
+          input(type='text', name='sinopsis')
+        div.form-group
+          label Año: 
+          input(type='text', name='anio')
+        div.form-group
+          label Director: 
+          input(type='text', name='director')
+        div.form-group
+          label Genero: 
+          input(type='text', name='genero')
+        div.form-group
+          label Caratula: 
+          input(type='text', name='caratula')
+        input(type='submit', value='Añadir')
