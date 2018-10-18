@@ -1,12 +1,12 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
- //mongoose.connect('mongodb://localhost/NegociosBd'); 
  var EntradaSchema = new Schema({ 
                                  cine: 'String',
-                                 sala : 'String',
+                                 sala : 'Number',
                                  pelicula : 'String',
-                                 fecha : 'String'
+                                 fecha : 'String',
+                                 hora :'String'
                                 });
                
                               
