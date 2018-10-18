@@ -1,0 +1,4 @@
+extends layout
+
+block content
+<h1>  ESTAS EN  LA PAGINA DE {{titulo}}</h1>
