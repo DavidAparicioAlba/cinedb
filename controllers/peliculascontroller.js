@@ -1,46 +1,46 @@
 var peliculas = require('../models/peliculas.js');
 
-function consultarTodos(callback){
-    peliculas.find(function(err,list){
-        if (err){
+function consultarTodos(callback) {
+    peliculas.find(function(err, list) {
+        if (err) {
             return callback(err);
         }
         return callback(null, list);
     });
 }
 
-function consultarPorID(id, callback){
-    peliculas.findOne({_id: id}, function(err, negocio){
-        if(err){
+function consultarPorID(id, callback) {
+    peliculas.findOne({ _id: id }, function(err, pelicula) {
+        if (err) {
             return callback(err);
         }
-            return callback(null, negocio);
+        return callback(null, pelicula);
     });
 }
 
-function altapelicula(pelicula, callback){
-    pelicula.save(function(err,alta){
-        if(err){
+function altapelicula(pelicula, callback) {
+    pelicula.save(function(err, alta) {
+        if (err) {
             return callback(err);
         }
         return callback(null, alta);
     })
 }
 
-function updatepelicula(id, campo, valor, callback){
+function updatepelicula(id, campo, valor, callback) {
     var modificacion = {};
     modificacion[campo] = valor;
-    peliculas.findByIdAndUpdate(id, {$set: {modificacion}} , function(err, modificado){
-        if(err){
+    peliculas.findByIdAndUpdate(id, { $set: { modificacion } }, function(err, modificado) {
+        if (err) {
             return callback(err);
         }
         return callback(null, modificado);
     });
 }
 
-function borrarpelicula(id, callback){
-    peliculas.findByIdAndRemove({_id: id}, function(err, borrado){
-        if(err){
+function borrarpelicula(id, callback) {
+    peliculas.findByIdAndRemove({ _id: id }, function(err, borrado) {
+        if (err) {
             callback(err);
         }
         return callback(null, borrado);

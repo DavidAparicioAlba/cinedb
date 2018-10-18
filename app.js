@@ -12,7 +12,7 @@ var usersRouter = require('./routes/users');
 var pelisRouter = require('./routes/peliculas');
 var entradaRouter = require('./routes/entrada');
 var sesionesRouter = require('./routes/sesiones');
-
+var nuevocineRouter = require('./routes/nuevocine');
 var app = express();
 
 // CORS
@@ -49,6 +49,7 @@ app.use('/users', usersRouter);
 app.use('/peliculas', pelisRouter);
 app.use('/entrada', entradaRouter);
 app.use('/sesiones', sesionesRouter);
+app.use('/cine', nuevocineRouter);
 
 
 // catch 404 and forward to error handler
