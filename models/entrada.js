@@ -3,11 +3,10 @@ var Schema = mongoose.Schema;
 
  //mongoose.connect('mongodb://localhost/NegociosBd'); 
  var EntradaSchema = new Schema({ 
-                                 comprada: 'String',
-                                 correo: 'String',
                                  cine: 'String',
-                                 pelicula: 'String',
-                                 sesion: 'String',
+                                 sala : 'String',
+                                 pelicula : 'String',
+                                 fecha : 'String'
                                 });
                
                               
