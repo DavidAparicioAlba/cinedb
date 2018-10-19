@@ -63,6 +63,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     let body = req.body;
+    console.log(body);
     const cine = new Cine({
         nombre: body.nombre,
         lat: body.lat,
