@@ -12,7 +12,7 @@ var cineChema = new Schema({
     lng: { type: String, required: [false, 'La longitud es necesario'] },
     direccion: { type: String, required: [false, 'La direccion es necesario'] },
     sesiones: [sesionSchema]
-}, { collection: 'cines' });
+}, { collection: 'cine' });
 
 
 module.exports = mongoose.model('Cine', cineChema);

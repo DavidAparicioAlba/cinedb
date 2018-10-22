@@ -30,7 +30,7 @@ app.use(function(req, res, next) {
 
 // Definimos DB
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/cinedb', { useNewUrlParser: true });
+mongoose.connect('mongodb://admincine:mongo29@ds237723.mlab.com:37723/cinedb', { useNewUrlParser: true });
 
 
 
