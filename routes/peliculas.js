@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
             if (err) {
                 return res.json({ message: 'Error al consultar las peliculas' });
             }
-            return res.json(list);
+            return res.json({list});
         } else {
             res.send('No acepta JSON')
         }
