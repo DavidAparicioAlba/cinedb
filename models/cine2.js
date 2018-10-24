@@ -6,13 +6,14 @@ var sesionSchema = new Schema({
     hora: { type: String, required: [false, 'La hora es necesario'] },
     n_entrada: { type: Number, required: false },
 });
-var cineChema = new Schema({
+var cineSchema = new Schema({
     nombre: { type: String, required: [false, 'La pelicula es necesario'] },
-    lat: { type: String, required: [false, 'La latitud es necesario'] },
-    lng: { type: String, required: [false, 'La longitud es necesario'] },
+    latitud: { type: String, required: [false, 'La latitud es necesario'] },
+    longitud: { type: String, required: [false, 'La longitud es necesario'] },
     direccion: { type: String, required: [false, 'La direccion es necesario'] },
+    horario: { type: String },
     sesiones: [sesionSchema]
 }, { collection: 'cine' });
 
 
-module.exports = mongoose.model('Cine', cineChema);
+module.exports = mongoose.model('Cine', cineSchema);

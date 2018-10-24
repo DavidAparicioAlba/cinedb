@@ -3,6 +3,7 @@ var router = express.Router();
 var Cine = require('../models/cine2');
 
 
+
 /* GET CINES. */
 router.get('/', function(req, res, next) {
     Cine.find()
@@ -66,9 +67,10 @@ router.post('/', (req, res) => {
     console.log(body);
     const cine = new Cine({
         nombre: body.nombre,
-        lat: body.lat,
-        lng: body.lng,
-        direccion: body.direccion
+        latitud: body.latitud,
+        longitud: body.longitud,
+        direccion: body.direccion,
+        horario: body.horario
     });
 
 
@@ -89,10 +91,12 @@ router.post('/', (req, res) => {
 });
 
 
-// Modificar Sesión de Cine
+// Añadir Sesiones de Cine
 router.put('/sesiones/:id', (req, res) => {
     let id = req.params.id;
     let body = req.body;
+
+    console.log(body);
 
     Cine.findById(id, (err, cine) => {
         if (err) {
@@ -110,11 +114,30 @@ router.put('/sesiones/:id', (req, res) => {
             });
         }
 
-        cine.sesiones.push({
-            pelicula: body.pelicula,
-            sala: body.sala,
-            hora: body.hora,
-            n_entrada: 20
+        
+        Cine.find({'cine.sesiones': {$elemMatch: {_id:body.id}}}).exec((err,sesion) =>{
+            if(err) {
+                res.status(500).json({
+                    err: err
+                });
+            }
+            if(!sesion){
+                cine.sesiones.push({
+                    pelicula: body.pelicula,
+                    sala: body.sala,
+                    hora: body.hora,
+                    n_entrada:20
+                });
+            }
+            if (sesion){
+                Cine.updateOne(
+                    {_id: id, "sesiones._id": body._id},
+                    { $set: { "sesiones.$.n_entrada" : body.n_entrada } }
+                ).exec((err,update)=>{
+                    console.log(update);
+                });
+                console.log(sesion);
+            }
         });
 
         cine.save((err, cineGuardado) => {
@@ -132,12 +155,14 @@ router.put('/sesiones/:id', (req, res) => {
 
             });
         });
-
-
-
-
     });
 });
 
+// Modificar una sesion
+
+router.put('/sesion/:id', (req, res) => {
+let id = req.params.id;
+    let body = req.body;
+});
 
 module.exports = router;
